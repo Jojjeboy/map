@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageServiceService } from './local-storage-service';
+import { LocalStorageServiceService } from './shared/local-storage-service';
 import { LsTypeEnum } from './LsTypeEnum';
 
 @Injectable()
