@@ -27,4 +27,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## Build and deploy
-ng build --output-path docs --base-href https://jojjeboy.github.io/workoutchamp/ && git add . && git commit -m"Deploy of the latest and greatest" && git push
+ng build --output-path docs --base-href https://jojjeboy.github.io/map/ && git add . && git commit -m"Deploy of the latest and greatest" && git push
