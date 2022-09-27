@@ -12,8 +12,9 @@ const routes: Routes = [
   {
     path: 'workoutchamp',
     component: WorkoutchampStartComponent,
-    data: { title: 'workoutchamp' }
+    data: { title: 'Workoutchamp Start' }
   },
+
   { path: '**', component: StartComponent }
 ];
 
@@ -27,3 +28,5 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
+
+
