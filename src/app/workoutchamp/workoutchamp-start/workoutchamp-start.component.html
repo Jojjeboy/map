@@ -50,7 +50,8 @@
             <p class="card-text text-muted">Antal pass genomförda på Nordic wellness gymanläggningar. Kortet kostar
               <span class="accent"><strong>
                   <!--{{ priceOfEachVisit | number: '1.0-2' }}-->kr
-                </strong></span> uträknat per träningstillfälle</p>
+                </strong></span> uträknat per träningstillfälle
+            </p>
           </div>
           <div class="card-body">
             <div class="row">
@@ -98,69 +99,52 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <!--div class="card mt-3 mb-3" *ngIf="resetBtnIsVisible">
-          <div class="card-body">
-            
-          </div>
-        </div>
-
-
-        <div id="resetCountersBtnToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToastBtn" class="toast" [ngClass]="resetBtnIsVisible ? 'show' : 'hide'" role="alert"
+          aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-              <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
             </svg> &nbsp; &nbsp;
             <strong class="me-auto">Nollställ räknare</strong>
             <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close" (click)="toggleResetVisibility()" data-bs-dismiss="toast"
+              aria-label="Close"></button>
           </div>
           <div class="toast-body">
-            
-          </div>
-        </div>
-        -->
-
-        
-      </div>
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-          <div id="liveToastBtn" class="toast" [ngClass]="resetBtnIsVisible ? 'show' : 'hide'" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-              </svg> &nbsp; &nbsp;
-              <strong class="me-auto">Nollställ räknare</strong>
-              <small>11 mins ago</small>
-              <button type="button" class="btn-close" (click)="toggleResetVisibility()" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-              <p class="text-muted" *ngIf="showGymResetBtn === false">Nollställ gymräknaren &nbsp; &nbsp;
-                <button [disabled]="showGymResetBtn || nrOfGymWorkoutsCompleted === nrOfGymWorkoutsCompletedBaseVal"
+            <p class="text-muted" *ngIf="showGymResetBtn === false">Nollställ gymräknaren &nbsp; &nbsp;
+              <button [disabled]="showGymResetBtn || nrOfGymWorkoutsCompleted === nrOfGymWorkoutsCompletedBaseVal"
                 (click)="showResetButton('gymKey')" class="btn btn-outline-danger me-md-2 btn-sm btn-end"
                 type="button">Nollställ räknaren</button>
-              </p>
-              <p class="text-muted" *ngIf="showGymResetBtn">Är du säker? &nbsp; &nbsp;
-                <button *ngIf="showGymResetBtn" (click)="reset('gymKey')" class="btn btn-danger me-md-2 btn-sm btn-end" type="button">Ja, nollställ
-                  räknaren</button>
-                </p>
-                
-                <p class="text-muted" *ngIf="!showHomeResetBtn">Nollställ hemma räknaren &nbsp; &nbsp;
-                  <button [disabled]="showHomeResetBtn || nrOfHomeWorkoutsCompleted === nrOfHomeWorkoutsCompletedBaseVal"
-                  (click)="showResetButton('homeWorkout')" class="btn btn-outline-danger me-md-2 btn-sm btn-end"
-                  type="button">Nollställ räknaren</button>
-                </p>
-                <p class="text-muted" *ngIf="showHomeResetBtn">Är du säker? &nbsp; &nbsp;
-                  <button *ngIf="showHomeResetBtn" (click)="reset('homeWorkout')"  class="btn btn-outline-danger me-md-2 btn-sm btn-end" type="button">Ja, nollställ
-                    räknaren</button>
-                  </p>
-                </div>
-              </div>
-              <button (click)="toggleResetVisibility()" class="btn btn-outline-danger me-md-2 btn-sm" type="button">Nollställ räknare</button>
-            </div>
-            
-            
+            </p>
+            <p class="text-muted" *ngIf="showGymResetBtn">Är du säker? &nbsp; &nbsp;
+              <button *ngIf="showGymResetBtn" (click)="reset('gymKey')" class="btn btn-danger me-md-2 btn-sm btn-end"
+                type="button">Ja, nollställ
+                räknaren</button>
+            </p>
+
+            <p class="text-muted" *ngIf="!showHomeResetBtn">Nollställ hemma räknaren &nbsp; &nbsp;
+              <button [disabled]="showHomeResetBtn || nrOfHomeWorkoutsCompleted === nrOfHomeWorkoutsCompletedBaseVal"
+                (click)="showResetButton('homeWorkout')" class="btn btn-outline-danger me-md-2 btn-sm btn-end"
+                type="button">Nollställ räknaren</button>
+            </p>
+            <p class="text-muted" *ngIf="showHomeResetBtn">Är du säker? &nbsp; &nbsp;
+              <button *ngIf="showHomeResetBtn" (click)="reset('homeWorkout')"
+                class="btn btn-outline-danger me-md-2 btn-sm btn-end" type="button">Ja, nollställ
+                räknaren</button>
+            </p>
           </div>
+        </div>
+        <button (click)="toggleResetVisibility()" class="btn btn-outline-danger me-md-2 btn-sm" type="button">Nollställ räknare</button>
+      </div>
+    </div>
   </section>
 </main>
+
+
+test
