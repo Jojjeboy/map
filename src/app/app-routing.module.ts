@@ -20,7 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ RouterModule.forRoot(
-    routes, { enableTracing: false, relativeLinkResolution: 'legacy' }
+    routes, {  useHash: true, enableTracing: false, relativeLinkResolution: 'legacy' }
   )],
   exports: [RouterModule],
   declarations: [
