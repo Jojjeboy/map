@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule } from '@angular/common';  
+import { BrowserModule } from '@angular/platform-browser';
+import { WorkoutchampStartComponent } from './workoutchamp-start/workoutchamp-start.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [WorkoutchampStartComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule
   ]
 })
 export class WorkoutchampModule { }

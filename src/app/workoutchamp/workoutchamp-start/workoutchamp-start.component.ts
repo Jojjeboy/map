@@ -16,6 +16,7 @@ export class WorkoutchampStartComponent implements OnInit {
   public nrOfHomeWorkoutsCompleted: number = 0;
   public nrOfHomeWorkoutsCompletedBaseVal: number = 2;
   public priceOfEachVisit: number = this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance;
+  public resetBtnIsVisible: boolean = false;
   public showGymResetBtn: boolean = false;
   public showHomeResetBtn: boolean = false;
 
@@ -124,5 +125,9 @@ export class WorkoutchampStartComponent implements OnInit {
     if (this.nrOfGymWorkoutsCompleted > 0) {
       this.priceOfEachVisit = (this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance) / this.nrOfGymWorkoutsCompleted
     }
+  }
+
+  public toggleResetVisibility() {
+    this.resetBtnIsVisible = !this.resetBtnIsVisible;
   }
 }
