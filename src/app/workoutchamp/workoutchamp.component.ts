@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { TallyService } from '../../tally-service';
-import { LsTypeEnum } from '../../LsTypeEnum';
+import { TallyService } from '../tally-service';
+import { LsTypeEnum } from '../LsTypeEnum';
 
 @Component({
   selector: 'app-workoutchamp-start',
-  templateUrl: './workoutchamp-start.component.html',
-  styleUrls: ['./workoutchamp-start.component.scss']
+  templateUrl: './workoutchamp.component.html',
+  styleUrls: ['./workoutchamp.component.scss']
 })
-export class WorkoutchampStartComponent implements OnInit {
+export class WorkoutchampComponent implements OnInit {
 
   private appName: string = 'workoutchamp';
-
   private priceOfWorkoutSubscription: number = 2995;
   private priceOfWorkoutCard: number = 100;
   private healthCareAllowance: number = 2500;
@@ -18,7 +17,6 @@ export class WorkoutchampStartComponent implements OnInit {
   public resetBtnIsVisible: boolean = false;
   public showGymResetBtn: boolean = false;
   public showHomeResetBtn: boolean = false;
-
   public counters: any;
 
   /**

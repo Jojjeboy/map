@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './start/start.component';
 import { TramstallyComponent } from './tramstally/tramstally.component';
-import { WorkoutchampStartComponent } from './workoutchamp/workoutchamp-start/workoutchamp-start.component';
+import { WorkoutchampComponent } from './workoutchamp/workoutchamp.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'workoutchamp',
-    component: WorkoutchampStartComponent,
+    component: WorkoutchampComponent,
     data: { title: 'Workoutchamp' }
   },
   {
