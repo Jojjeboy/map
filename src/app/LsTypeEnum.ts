@@ -1,7 +1,7 @@
 export enum LsTypeEnum {
 
     /** WorkoutChamp */
-    gymKey = 'gymKey',
+    gymWorkout = 'gymWorkout',
     homeWorkout = 'homeWorkout'
 
 

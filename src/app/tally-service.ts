@@ -5,24 +5,22 @@ import { LsTypeEnum } from './LsTypeEnum';
 @Injectable()
 export class TallyService {
 
+  
   constructor(private lsService: LocalStorageServiceService) { }
+  public defaultData = {gymWorkout: {data: 0},homeWorkout: {data: 0}}
 
-  public saveCounter(key: string, value: number){
-    if(key === LsTypeEnum.gymKey.toString() || key === LsTypeEnum.homeWorkout.toString()){
-      this.lsService.saveData(key, JSON.stringify(value));
-    }
+  public saveCounter(app: string, value: any){
+    this.lsService.saveData(app, JSON.stringify(value));
   }
 
-  public getCounter(key: string): number {
-    if(key === LsTypeEnum.gymKey.toString() || key === LsTypeEnum.homeWorkout.toString()){
-      const counter = this.lsService.getData(key);
-      return parseInt(counter!);
-    }
-    return 0;
+  public getCounter(app: string): any {
+    let counter = this.lsService.getData(app, this.defaultData);
+    return JSON.parse(counter);
+    
   }
 
   public clearCounter(key: string): void {
-    if(key === LsTypeEnum.gymKey.toString() || key === LsTypeEnum.homeWorkout.toString()){
+    if(key === LsTypeEnum.gymWorkout.toString() || key === LsTypeEnum.homeWorkout.toString()){
       this.lsService.removeData(key);
     }
   }

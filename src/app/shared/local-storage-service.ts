@@ -10,13 +10,13 @@ export class LocalStorageServiceService {
     }
   }
 
-  private initializeKey(key: string) {
-      localStorage.setItem(key, '0');
+  private initializeKey(key: string, defaultData: any) {
+      localStorage.setItem(key, JSON.stringify(defaultData));
   }
 
-  public getData(key: string) {
+  public getData(key: string, defaultData: any): any {
     if (localStorage.getItem(key) === null) {
-      this.initializeKey(key);
+      this.initializeKey(key, defaultData);
     }
     return localStorage.getItem(key);
   }

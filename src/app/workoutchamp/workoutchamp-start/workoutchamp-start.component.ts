@@ -8,15 +8,18 @@ import { LsTypeEnum } from '../../LsTypeEnum';
   styleUrls: ['./workoutchamp-start.component.scss']
 })
 export class WorkoutchampStartComponent implements OnInit {
+  
+  private appName: string = 'workoutchamp';
+  
   private priceOfWorkoutSubscription: number = 2995;
   private priceOfWorkoutCard: number = 100;
   private healthCareAllowance: number = 2500;
-  public nrOfGymWorkoutsCompleted: number = 0;
-  public nrOfHomeWorkoutsCompleted: number = 0;
   public priceOfEachVisit: number = this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance;
   public resetBtnIsVisible: boolean = false;
   public showGymResetBtn: boolean = false;
   public showHomeResetBtn: boolean = false;
+
+  public counters: any;
 
   /**
    * Current value
@@ -32,103 +35,67 @@ export class WorkoutchampStartComponent implements OnInit {
   }
 
   public getCount() {
-    const gymLsValue = this.tallyService.getCounter(LsTypeEnum.gymKey.toString());
-    const homeWorkoutLsValue = this.tallyService.getCounter(LsTypeEnum.homeWorkout.toString());
-    if (gymLsValue > this.nrOfGymWorkoutsCompleted) {
-      this.nrOfGymWorkoutsCompleted = gymLsValue;
-    }
-    else {
-      this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
-    }
-    if (homeWorkoutLsValue > this.nrOfHomeWorkoutsCompleted) {
-      this.nrOfHomeWorkoutsCompleted = homeWorkoutLsValue;
-    }
-    else {
-      this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
-    }
+    let lsCounters = this.tallyService.getCounter(this.appName);
+    this.counters = lsCounters;
+    
     this.recalculateGymPrice();
+    
   }
 
 
   public increase(key: string) :void {
-    if(key === LsTypeEnum.gymKey){
-      this.nrOfGymWorkoutsCompleted += 1;
-      this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
+    if(key === LsTypeEnum.gymWorkout){
+      
+      this.counters.gymWorkout.data += 1;
+      this.tallyService.saveCounter(this.appName, this.counters);
       this.recalculateGymPrice();
     }
     else if(key === LsTypeEnum.homeWorkout){
-      this.nrOfHomeWorkoutsCompleted += 1;
-      this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
+      this.counters.homeWorkout.data += 1;
+      this.tallyService.saveCounter(this.appName, this.counters);
     }
   }
 
 
   public decrease(key: string) :void {
-    if(key === LsTypeEnum.gymKey){
-      if (this.nrOfGymWorkoutsCompleted > 0) {
-        this.nrOfGymWorkoutsCompleted -= 1;
-        this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
+    if(key === LsTypeEnum.gymWorkout){
+      if (this.counters.gymWorkout.data > 0) {
+        this.counters.gymWorkout.data -= 1;
+        this.tallyService.saveCounter(this.appName, this.counters);
         this.recalculateGymPrice();
       }
     }
     else if(key === LsTypeEnum.homeWorkout){
-      if (this.nrOfHomeWorkoutsCompleted > 0) {
-        this.nrOfHomeWorkoutsCompleted -= 1;
-        this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
+      if (this.counters.homeWorkout.data > 0) {
+        this.counters.homeWorkout.data -= 1;
+        this.tallyService.saveCounter(this.appName, this.counters);
       }
     }
   }
     
-    
   
 
-  public increaseGym() {
-    this.nrOfGymWorkoutsCompleted += 1;
-    this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
-    this.recalculateGymPrice();
-  }
-
-  public decreaseGym() {
-    if (this.nrOfGymWorkoutsCompleted > 0) {
-      this.nrOfGymWorkoutsCompleted -= 1;
-      this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
-      this.recalculateGymPrice();
-    }
-  }
-
-  public increaseHomeWorkout() {
-    this.nrOfHomeWorkoutsCompleted += 1;
-    this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
-  }
-
-  public decreaseHomeWorkout() {
-    this.nrOfHomeWorkoutsCompleted -= 1;
-    this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
-  }
-
   public reset(key: string): void {    
-    if(key === LsTypeEnum.gymKey){
-      this.nrOfGymWorkoutsCompleted = 0;
-      this.tallyService.saveCounter(key, 0);
+    if(key === LsTypeEnum.gymWorkout){
+      this.counters.gymWorkout.data = 0;
     }
     else if(key === LsTypeEnum.homeWorkout){
-      this.nrOfHomeWorkoutsCompleted = 0;
-      this.tallyService.saveCounter(key, 0);
+      this.counters.homeWorkout.data = 0;
     }
-    
+    this.tallyService.saveCounter(this.appName, this.counters);
     this.showGymResetBtn = false;
     this.showHomeResetBtn = false;
   }
 
   public showResetButton(key: string) {
-    if (key === LsTypeEnum.gymKey || key === LsTypeEnum.homeWorkout) {
-      key === LsTypeEnum.gymKey ? this.showGymResetBtn = true : this.showHomeResetBtn = true;
+    if (key === LsTypeEnum.gymWorkout || key === LsTypeEnum.homeWorkout) {
+      key === LsTypeEnum.gymWorkout ? this.showGymResetBtn = true : this.showHomeResetBtn = true;
     }
   }
 
   private recalculateGymPrice() {
-    if (this.nrOfGymWorkoutsCompleted > 0) {
-      this.priceOfEachVisit = (this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance) / this.nrOfGymWorkoutsCompleted
+    if (this.counters.gymWorkout.data > 0) {
+      this.priceOfEachVisit = (this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance) / this.counters.gymWorkout.data
     }
   }
 

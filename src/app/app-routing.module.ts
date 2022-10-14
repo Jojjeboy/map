@@ -14,6 +14,11 @@ const routes: Routes = [
     component: WorkoutchampStartComponent,
     data: { title: 'Workoutchamp Start' }
   },
+  {
+    path: 'tramstally',
+    component: WorkoutchampStartComponent,
+    data: { title: 'Workoutchamp Start' }
+  },
 
   { path: '**', component: StartComponent }
 ];

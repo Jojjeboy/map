@@ -9,13 +9,10 @@
             </svg>
           </a>
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a routerLinkActive="active" routerLink="/" class="nav-link px-2 text-white">Start</a></li>
-            <li><a routerLinkActive="active" routerLink="/workoutchamp" class="nav-link px-2 text-white">WorkoutChamp</a></li>
-            <li><a routerLinkActive="active" routerLink="/tramstally" class="nav-link px-2 text-white">TramsTally</a></li>
+            <li><a routerLinkActive="active" routerLink="/" class="nav-link px-2 text-white" data-bs-toggle="collapse" data-bs-target="#navbarHeader">Start</a></li>
+            <li><a routerLinkActive="active" routerLink="/workoutchamp" class="nav-link px-2 text-white" data-bs-toggle="collapse" data-bs-target="#navbarHeader">WorkoutChamp</a></li>
+            <li><a routerLinkActive="active" routerLink="/tramstally" class="nav-link px-2 text-white" data-bs-toggle="collapse" data-bs-target="#navbarHeader">TramsTally</a></li>
           </ul>
-          <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-primary">Start</button>
-          </div>
         </div>
       </div>
     </div>
@@ -35,46 +32,5 @@
     </div>
   </div>
 </header>
-
-<!--header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">Nollställ</h4>
-          <p class="text-muted" *ngIf="!showGymResetBtn">Nollställ gymräknaren &nbsp; &nbsp;
-            <button [disabled]="showGymResetBtn || nrOfGymWorkoutsCompleted === nrOfGymWorkoutsCompletedBaseVal" (click)="showResetButton('gymKey')"
-              class="btn btn-outline-danger me-md-2 btn-sm btn-end" type="button">Nollställ räknaren</button>
-          </p>
-          <p class="text-muted" *ngIf="showGymResetBtn">Är du säker? &nbsp; &nbsp;
-            <button *ngIf="showGymResetBtn" (click)="reset('gymKey')" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-              class="btn btn-danger me-md-2 btn-sm btn-end" type="button">Ja, nollställ räknaren</button>
-          </p>
-          <hr />
-          <p class="text-muted" *ngIf="!showHomeResetBtn">Nollställ hemma räknaren &nbsp; &nbsp;
-            <button [disabled]="showHomeResetBtn || nrOfHomeWorkoutsCompleted === nrOfHomeWorkoutsCompletedBaseVal" (click)="showResetButton('homeWorkout')"
-              class="btn btn-outline-danger me-md-2 btn-sm btn-end" type="button">Nollställ räknaren</button>
-          </p>
-          <p class="text-muted" *ngIf="showHomeResetBtn">Är du säker? &nbsp; &nbsp;
-            <button *ngIf="showHomeResetBtn" (click)="reset('homeWorkout')" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-              class="btn btn-danger me-md-2 btn-sm btn-end" type="button">Ja, nollställ räknaren</button>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <img src="./assets/favicon-32x32.png" title="WorkoutChamp" class="me-2">
-        <strong>WorkoutChamp</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header>-->
 
 <router-outlet></router-outlet>
