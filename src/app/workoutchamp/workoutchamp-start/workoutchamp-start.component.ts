@@ -12,13 +12,18 @@ export class WorkoutchampStartComponent implements OnInit {
   private priceOfWorkoutCard: number = 100;
   private healthCareAllowance: number = 2500;
   public nrOfGymWorkoutsCompleted: number = 0;
-  public nrOfGymWorkoutsCompletedBaseVal: number = 1;
   public nrOfHomeWorkoutsCompleted: number = 0;
-  public nrOfHomeWorkoutsCompletedBaseVal: number = 2;
   public priceOfEachVisit: number = this.priceOfWorkoutSubscription + this.priceOfWorkoutCard - this.healthCareAllowance;
   public resetBtnIsVisible: boolean = false;
   public showGymResetBtn: boolean = false;
   public showHomeResetBtn: boolean = false;
+
+  /**
+   * Current value
+   * Home workout: 2
+   * Gym workout: 1
+   * 
+   */
 
   constructor(private tallyService: TallyService) { }
 
@@ -60,14 +65,14 @@ export class WorkoutchampStartComponent implements OnInit {
 
   public decrease(key: string) :void {
     if(key === LsTypeEnum.gymKey){
-      if (this.nrOfGymWorkoutsCompleted > this.nrOfGymWorkoutsCompletedBaseVal) {
+      if (this.nrOfGymWorkoutsCompleted > 0) {
         this.nrOfGymWorkoutsCompleted -= 1;
         this.tallyService.saveCounter(LsTypeEnum.gymKey.toString(), this.nrOfGymWorkoutsCompleted);
         this.recalculateGymPrice();
       }
     }
     else if(key === LsTypeEnum.homeWorkout){
-      if (this.nrOfHomeWorkoutsCompleted > this.nrOfHomeWorkoutsCompletedBaseVal) {
+      if (this.nrOfHomeWorkoutsCompleted > 0) {
         this.nrOfHomeWorkoutsCompleted -= 1;
         this.tallyService.saveCounter(LsTypeEnum.homeWorkout.toString(), this.nrOfHomeWorkoutsCompleted);
       }
@@ -103,12 +108,12 @@ export class WorkoutchampStartComponent implements OnInit {
 
   public reset(key: string): void {    
     if(key === LsTypeEnum.gymKey){
-      this.nrOfGymWorkoutsCompleted = this.nrOfGymWorkoutsCompletedBaseVal;
-      this.tallyService.saveCounter(key, this.nrOfGymWorkoutsCompletedBaseVal);
+      this.nrOfGymWorkoutsCompleted = 0;
+      this.tallyService.saveCounter(key, 0);
     }
     else if(key === LsTypeEnum.homeWorkout){
-      this.nrOfHomeWorkoutsCompleted = this.nrOfHomeWorkoutsCompletedBaseVal;
-      this.tallyService.saveCounter(key, this.nrOfHomeWorkoutsCompletedBaseVal);
+      this.nrOfHomeWorkoutsCompleted = 0;
+      this.tallyService.saveCounter(key, 0);
     }
     
     this.showGymResetBtn = false;
