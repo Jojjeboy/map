@@ -8,9 +8,9 @@ import { LsTypeEnum } from '../../LsTypeEnum';
   styleUrls: ['./workoutchamp-start.component.scss']
 })
 export class WorkoutchampStartComponent implements OnInit {
-  
+
   private appName: string = 'workoutchamp';
-  
+
   private priceOfWorkoutSubscription: number = 2995;
   private priceOfWorkoutCard: number = 100;
   private healthCareAllowance: number = 2500;
@@ -37,49 +37,43 @@ export class WorkoutchampStartComponent implements OnInit {
   public getCount() {
     let lsCounters = this.tallyService.getCounter(this.appName);
     this.counters = lsCounters;
-    
     this.recalculateGymPrice();
-    
   }
 
-
-  public increase(key: string) :void {
-    if(key === LsTypeEnum.gymWorkout){
-      
+  public increase(key: string): void {
+    if (key === LsTypeEnum.gymWorkout) {
       this.counters.gymWorkout.data += 1;
       this.tallyService.saveCounter(this.appName, this.counters);
       this.recalculateGymPrice();
     }
-    else if(key === LsTypeEnum.homeWorkout){
+    else if (key === LsTypeEnum.homeWorkout) {
       this.counters.homeWorkout.data += 1;
       this.tallyService.saveCounter(this.appName, this.counters);
     }
   }
 
 
-  public decrease(key: string) :void {
-    if(key === LsTypeEnum.gymWorkout){
+  public decrease(key: string): void {
+    if (key === LsTypeEnum.gymWorkout) {
       if (this.counters.gymWorkout.data > 0) {
         this.counters.gymWorkout.data -= 1;
         this.tallyService.saveCounter(this.appName, this.counters);
         this.recalculateGymPrice();
       }
     }
-    else if(key === LsTypeEnum.homeWorkout){
+    else if (key === LsTypeEnum.homeWorkout) {
       if (this.counters.homeWorkout.data > 0) {
         this.counters.homeWorkout.data -= 1;
         this.tallyService.saveCounter(this.appName, this.counters);
       }
     }
   }
-    
-  
 
-  public reset(key: string): void {    
-    if(key === LsTypeEnum.gymWorkout){
+  public reset(key: string): void {
+    if (key === LsTypeEnum.gymWorkout) {
       this.counters.gymWorkout.data = 0;
     }
-    else if(key === LsTypeEnum.homeWorkout){
+    else if (key === LsTypeEnum.homeWorkout) {
       this.counters.homeWorkout.data = 0;
     }
     this.tallyService.saveCounter(this.appName, this.counters);

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageServiceService } from './shared/local-storage-service';
-import { LsTypeEnum } from './LsTypeEnum';
+import { LocalStorageServiceService } from '../shared/local-storage-service';
 
-@Injectable()
-export class TallyService {
+@Injectable({
+  providedIn: 'root'
+})
+export class TramstallyService {
 
-  
   constructor(private lsService: LocalStorageServiceService) { }
-  public defaultData = {gymWorkout: {data: 0},homeWorkout: {data: 0}}
+  public defaultData = {freeRides: {data: 0}}
 
   public saveCounter(app: string, value: any){
     this.lsService.saveData(app, JSON.stringify(value));
@@ -16,7 +16,7 @@ export class TallyService {
   public getCounter(app: string): any {
     let counter = this.lsService.getData(app, this.defaultData);
     return JSON.parse(counter);
-    
+
   }
 
 }

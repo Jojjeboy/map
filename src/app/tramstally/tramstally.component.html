@@ -1,0 +1,45 @@
+<main>
+    <section class="container">
+      <div class="row mb-5 mt-5">
+        <div class="col">
+          <h2 class="fw-light togo" [ngClass]="balance < 0 ? 'green' : 'red'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-arrow-up"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+            </svg>
+            {{ nrOfUnpaidRidesLeft *-1 }}<small *ngIf="balance < 0">to go</small>
+          </h2>
+        </div>
+        <div class="col">
+          <h2 class="fw-light green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-arrow-down"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+            </svg>
+            {{ counters.freeRides.data }}<small>down</small>
+          </h2>
+        </div>
+        
+      </div>
+      <div class="row mb-5 mt-5">
+        <div class="col">
+          <h2 class="fw-light text-center down"  [ngClass]="balance < 0 ? 'text-muted' : 'green'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-arrows-collapse" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+            </svg>
+            {{ balance }}<small>kr</small>
+          </h2>
+        </div>
+      </div>
+      <div class="row action-buttons">
+        <div class="col">
+          <button type="button" (click)="decrease()" class="btn btn-danger btn-block" [disabled]="nrOfUnpaidRidesLeft == 43">Minska</button> &nbsp;
+        </div>
+        <div class="col">
+          <button type="button" (click)="increase()" class="btn btn-success btn-block">Tjuvåkt</button>
+        </div>
+      </div>
+    </section>
+  </main>

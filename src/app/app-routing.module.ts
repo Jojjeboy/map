@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './start/start.component';
+import { TramstallyComponent } from './tramstally/tramstally.component';
 import { WorkoutchampStartComponent } from './workoutchamp/workoutchamp-start/workoutchamp-start.component';
 
 const routes: Routes = [
@@ -12,12 +13,12 @@ const routes: Routes = [
   {
     path: 'workoutchamp',
     component: WorkoutchampStartComponent,
-    data: { title: 'Workoutchamp Start' }
+    data: { title: 'Workoutchamp' }
   },
   {
     path: 'tramstally',
-    component: WorkoutchampStartComponent,
-    data: { title: 'Workoutchamp Start' }
+    component: TramstallyComponent,
+    data: { title: 'Tramstally' }
   },
 
   { path: '**', component: StartComponent }

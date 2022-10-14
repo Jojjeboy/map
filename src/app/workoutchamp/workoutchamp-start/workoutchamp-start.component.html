@@ -63,18 +63,17 @@
   </section>
 
 
-  
-  <section class="container mb-5">
-    <div class="card " [ngClass]="resetBtnIsVisible ? '' : 'visually-hidden'" >
+
+  <section class="container mb-5" id="somediv">
+    <div class="card " [ngClass]="resetBtnIsVisible ? '' : 'visually-hidden'">
       <div class="card-header">
         Nollställ räknare
       </div>
       <div class="card-body">
-        
+
         <p class="" *ngIf="showGymResetBtn === false">Nollställ gymräknaren <br />
-          <button [disabled]="showGymResetBtn || counters.gymWorkout.data === 0"
-            (click)="showResetButton('gymWorkout')" class="btn btn-outline-danger me-md-2 btn-sm btn-end"
-            type="button">Nollställ räknaren</button>
+          <button [disabled]="showGymResetBtn || counters.gymWorkout.data === 0" (click)="showResetButton('gymWorkout')"
+            class="btn btn-outline-danger me-md-2 btn-sm btn-end" type="button">Nollställ räknaren</button>
         </p>
         <p class="text-muted" *ngIf="showGymResetBtn">Är du säker?<br />
           <button *ngIf="showGymResetBtn" (click)="reset('gymWorkout')" class="btn btn-danger me-md-2 btn-sm btn-end"
@@ -94,10 +93,14 @@
             räknaren</button>
         </p>
         <hr />
-        <button *ngIf="resetBtnIsVisible" class="btn btn-success me-md-2 btn-sm" (click)="toggleResetVisibility()" type="button">Stäng</button>
+        <button *ngIf="resetBtnIsVisible" class="btn btn-success me-md-2 btn-sm" (click)="toggleResetVisibility();"
+          type="button">Stäng</button>
       </div>
     </div>
-    <button *ngIf="(counters.homeWorkout.data > 0 || counters.gymWorkout.data > 0) && !resetBtnIsVisible" class="btn btn-outline-danger me-md-2 btn-sm" (click)="toggleResetVisibility()" type="button">Nollställ räknare</button>
+    <div class="text-center">
+      <button *ngIf="(counters.homeWorkout.data > 0 || counters.gymWorkout.data > 0) && !resetBtnIsVisible"
+        class="btn btn-outline-danger me-md-2 btn-sm" (click)="toggleResetVisibility()" type="button">Nollställ
+        räknare</button>
+    </div>
   </section>
-
 </main>

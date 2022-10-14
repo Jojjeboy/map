@@ -8,10 +8,12 @@ import { LocalStorageServiceService } from './shared/local-storage-service';
 import { WorkoutchampModule } from './workoutchamp/workoutchamp.module';
 
 import { TallyService } from './tally-service';
+import { TramstallyComponent } from './tramstally/tramstally.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TramstallyComponent
   ],
   imports: [
     BrowserModule,
