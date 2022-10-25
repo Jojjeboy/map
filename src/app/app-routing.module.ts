@@ -13,11 +13,13 @@ const routes: Routes = [
   {
     path: 'workoutchamp',
     component: WorkoutchampComponent,
+    title: 'Workoutchamp',
     data: { title: 'Workoutchamp' }
   },
   {
     path: 'tramstally',
     component: TramstallyComponent,
+    title: 'Tramstally',
     data: { title: 'Tramstally' }
   },
 

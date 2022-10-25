@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TallyService } from './tally-service';
-import { LsTypeEnum } from './LsTypeEnum';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(private router: ActivatedRoute) {}
+  pageTitle: string = '';
+  constructor(private router: Router, private titleService: Title) {
+    this.router.events.subscribe((event: Event) => {
 
-  ngOnInit(): void {
-    this.router.params.subscribe(data => {
-      console.log(data);
-    })
+      if (event instanceof NavigationEnd) {
+
+        if (event.url.split('/')[1]) {
+          const urlPart = event.url.split('/')[1];
+          this.pageTitle = urlPart.charAt(0).toUpperCase() + urlPart.slice(1);
+        }
+        else {
+          this.pageTitle = 'Start'
+        }
+      }
+    });
   }
 }
