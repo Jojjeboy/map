@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageServiceService } from 'src/app/shared/local-storage-service';
 import { TramstallyService } from './tramstally.service';
 
 @Component({

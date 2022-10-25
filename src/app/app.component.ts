@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
