@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TallyService } from '../tally-service';
-import { LsTypeEnum } from '../LsTypeEnum';
+import { TallyService } from '../../tally-service';
+import { LsTypeEnum } from '../../LsTypeEnum';
 
 @Component({
-  selector: 'app-workoutchamp-start',
+  selector: 'app-workoutchamp',
   templateUrl: './workoutchamp.component.html',
   styleUrls: ['./workoutchamp.component.scss']
 })
@@ -22,7 +22,7 @@ export class WorkoutchampComponent implements OnInit {
   /**
    * Current value
    * Home workout: 2
-   * Gym workout: 1
+   * Gym workout: 3
    * 
    */
 

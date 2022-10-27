@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './start/start.component';
-import { TramstallyComponent } from './tramstally/tramstally.component';
-import { WorkoutchampComponent } from './workoutchamp/workoutchamp.component';
+import { TramstallyComponent } from './start/tramstally/tramstally.component';
+import { WorkoutchampComponent } from './start/workoutchamp/workoutchamp.component';
 
 const routes: Routes = [
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
   )],
   exports: [RouterModule],
   declarations: [
-    StartComponent
+    
   ]
 })
 export class AppRoutingModule { }
